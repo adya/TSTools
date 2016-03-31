@@ -1,11 +1,3 @@
-//
-//  UIWindow+UIWindow_PresentedViewController.m
-//  GridironMoe
-//
-//  Created by Adya on 11/18/15.
-//  Copyright (c) 2015 Ocusco Corporation. All rights reserved.
-//
-
 #import "UIWindow+UIWindow+PresentedViewController.h"
 
 @implementation UIWindow (PresentedViewController)

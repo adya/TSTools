@@ -13,28 +13,29 @@
     return manager;
 }
 
-+(BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
+#pragma mark - Initialization 
+
++(void) startWithLaunchOptions:(NSDictionary *)launchOptions{
     UILocalNotification *localNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if (localNotification) {
-        application.applicationIconBadgeNumber = 0;
+        [UIApplication sharedApplication].applicationIconBadgeNumber--;
         [[TSNotificationManager sharedManager] handleReceivedNotification:localNotification];
     }
     
     NSLog(@"Clearing %lu scheduled notifications", (unsigned long)[self scheduledNotificationsCount]);
-    [application cancelAllLocalNotifications];
-    return YES;
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
 
-+(void) application:(UIApplication*) application didReceiveLocalNotification:(UILocalNotification*) notification {
-    application.applicationIconBadgeNumber = 0;
-    
+#pragma mark - Class methods
+
++(void) handleReceivedNotification:(UILocalNotification*) notification {
+    [UIApplication sharedApplication].applicationIconBadgeNumber--;
     [[TSNotificationManager sharedManager] handleReceivedNotification:notification];
 }
 
 + (NSUInteger) scheduledNotificationsCount{
     return [UIApplication sharedApplication].scheduledLocalNotifications.count;
 }
-
 
 + (void) scheduleNotificationWithMessage:(NSString*) notificationMessage withHandler:(TSNotificationBlock) handler on:(NSDate*) date{
     [TSNotificationManager scheduleNotificationWithMessage:notificationMessage andUserInfo:nil withHandler:handler on:date];
@@ -55,6 +56,8 @@
 +(void) invalidateStoredNotificationsWithBlock:(TSNotificationValidatingBlock)block{
     [[TSNotificationManager sharedManager] invalidateStoredNotificationsWithBlock:block];
 }
+
+#pragma mark - Instance methods
 
 -(void) handleReceivedNotification:(UILocalNotification*)notification{
     if (!notification || !pendingNotifications) return;
@@ -85,7 +88,7 @@
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     localNotification.fireDate = date;
     localNotification.alertBody = notificationMessage;
-    localNotification.timeZone = timeZone;
+    localNotification.timeZone = (timeZone ? timeZone : [NSTimeZone defaultTimeZone]);
     localNotification.userInfo = userInfo;
     localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
     

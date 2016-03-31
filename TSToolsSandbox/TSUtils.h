@@ -1,10 +1,16 @@
-//
-//  TSUtils.h
-//
-//  Created by Adya on 13/01/2015.
-//  Copyright (c) 2015 Adya. All rights reserved.
-//
-
+/**
+ *  Author:     AdYa
+ *  Version:    1.0
+ *  iOS:        2.0+
+ *  Date:       01/13/2015
+ *  Status:     Outdated, Undocumented, Rework Requested
+ *
+ *  Dependency: None
+ *
+ *  Description:
+ *
+ *  Lost of utility methods, should be categorized.
+ */
 
 #ifndef UTILS
 #define UTILS

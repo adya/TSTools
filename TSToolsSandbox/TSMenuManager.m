@@ -1,12 +1,6 @@
-//
-//  TSMenuManager.m
-//  CelcoinUsuario
-//
-//  Created by Adya on 7/2/15.
-//  Copyright (c) 2015 Adya. All rights reserved.
-//
-
 #import "TSMenuManager.h"
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "REMenu.h"
 
 @implementation TSMenuManager{
@@ -50,5 +44,11 @@
         menu = nil;
         NSLog(@"MenuItemsProvider wasn't set.");
     }
+}
+
+-(NSMutableArray<REMenuItem*>*) getMenuItemsForViewController{
+    NSMutableArray* arr = [NSMutableArray new];
+    [arr addObject:@""];
+    return arr;
 }
 @end

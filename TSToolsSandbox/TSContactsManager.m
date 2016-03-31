@@ -1,11 +1,3 @@
-//
-//  TSContactsManager.m
-//  CelcoinUsuario
-//
-//  Created by Adya on 7/28/15.
-//  Copyright (c) 2015 Adya. All rights reserved.
-//
-
 #import "TSContactsManager.h"
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
@@ -29,7 +21,7 @@
     return contactsBook != nil;
 }
 
-+ (TSContactsManager*) sharedManager{
++ (instancetype) sharedManager{
     static TSContactsManager* manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{manager = [[self alloc] init];});
@@ -229,17 +221,7 @@
 
 @implementation TSContact
 
-@synthesize firstName;
-@synthesize lastName;
-@synthesize middleName;
-
-@synthesize phone;
-@synthesize auxPhones;
-
-@synthesize email;
-@synthesize auxEmails;
-
-@synthesize  picture;
+@synthesize firstName, lastName, middleName, phone, auxPhones, email, auxEmails, picture;
 
 -(NSString*) fullName{
     if ((firstName && firstName.length > 0) && (lastName && lastName.length > 0))
@@ -249,7 +231,7 @@
     else if (lastName && lastName.length > 0)
         return lastName;
     else
-        return @"NO_NAME";
+        return nil;
 }
 
 @end

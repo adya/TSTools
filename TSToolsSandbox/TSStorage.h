@@ -1,3 +1,15 @@
+/**
+ *  Author:     AdYa
+ *  Version:    1.0
+ *  iOS:        2.0+
+ *  Date:       ../../2015
+ *  Status:     Rework Requested
+ *
+ *  Description:
+ *
+ *  Will evolve into family of TSStorage, TSRemoteStorage, TSLocalStorage, TSTempStorage.
+ *  TSStoregate will be base @interface or even @protocol
+ */
 #ifndef TS_STORAGE_H
 #define TS_STORAGE_H
 

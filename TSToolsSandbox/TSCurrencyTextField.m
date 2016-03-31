@@ -1,12 +1,4 @@
-//
-//  TSCurrencyTextField.m
-//
-//  Created by Nicholas Hodapp on 10/30/13.
-//  Copyright (c) 2013 Nicholas Hodapp. All rights reserved.
-//
-
 #import "TSCurrencyTextField.h"
-#import <objc/runtime.h>
 
 @interface TSCurrencyTextFieldDelegate : NSObject <UITextFieldDelegate>
 @property (weak, nonatomic) id<UITextFieldDelegate> delegate;
@@ -75,7 +67,7 @@
 
 - (void) setAmount: (NSNumber *) amount
 {
-    NSString* amountString = [NSString stringWithFormat: @"%.*lf", _currencyNumberFormatter.maximumFractionDigits, amount.doubleValue];
+    NSString* amountString = [NSString stringWithFormat: @"%.*lf", (int)_currencyNumberFormatter.maximumFractionDigits, amount.doubleValue];
     [self setText: amountString];
 }
 
@@ -116,32 +108,15 @@
 
 @implementation TSCurrencyTextFieldDelegate
 
-- (BOOL) respondsToSelector: (SEL) aSelector
-{
-    // we'll forward any implemented UITextFieldDelegate method, other than the one we implement ourself.
-    
-    BOOL selfResponds = [super respondsToSelector: aSelector];
-    if ( selfResponds )
-        return YES;
-    
-    struct objc_method_description md = protocol_getMethodDescription( @protocol(UITextFieldDelegate), aSelector, NO, YES);
-    
-    if ( md.name != NULL && md.types != NULL )
-        return [self.delegate respondsToSelector: aSelector];
-    
-    return selfResponds;
+/// Forward any implemented UITextFieldDelegate method, other than the one we implement ourself.
+- (BOOL) respondsToSelector: (SEL) aSelector {
+    return [super respondsToSelector: aSelector] || [self.delegate respondsToSelector:aSelector];
 }
 
-- (id) forwardingTargetForSelector: (SEL) aSelector
-{
-    // we'll forward any implemented UITextFieldDelegate method, other than the one we implement ourself.
-
-    struct objc_method_description md = protocol_getMethodDescription( @protocol(UITextFieldDelegate), aSelector, NO, YES);
-    
-    if ( md.name != NULL && md.types != NULL && [self.delegate respondsToSelector: aSelector] )
+- (id) forwardingTargetForSelector: (SEL) aSelector {
+    if ([self.delegate respondsToSelector: aSelector])
         return self.delegate;
-    
-    return nil;
+    else return nil;
 }
 
 - (BOOL) textField: (TSCurrencyTextField *) textField shouldChangeCharactersInRange: (NSRange) range replacementString: (NSString *) string
@@ -153,7 +128,7 @@
         return NO;
     }
     
-    int distanceFromEnd = textField.text.length - (range.location + range.length);
+    NSUInteger distanceFromEnd = textField.text.length - (range.location + range.length);
     
     NSString* changed = [textField.text stringByReplacingCharactersInRange: range withString: string];
     if (textField.maximumLength > 0 && changed.length > textField.maximumLength)
@@ -165,7 +140,7 @@
     }
     else
         [textField setText:changed];
-    int pos = textField.text.length - distanceFromEnd;
+    NSInteger pos = textField.text.length - distanceFromEnd;
     if ( pos >= 0 && pos <= textField.text.length )
     {
         [textField setCaratPosition: pos];

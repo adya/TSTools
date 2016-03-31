@@ -1,11 +1,17 @@
-//
-//  TSViewController.h
-//  PictPerfect
-//
-//  Created by Adya on 13/01/2015.
-//  Copyright (c) 2015 vvteam. All rights reserved.
-//
-
+/**
+ *  Author:     AdYa
+ *  Version:    2.0
+ *  iOS:        2.0+
+ *  Date:       01/13/2015
+ *  Status:     Outdated, Undocumented
+ *
+ *  Dependency: @header TSUtils,
+ *              @header TSMenuManager
+ *
+ *  Description:
+ *
+ *  TSViewController provides useful methods for UIViewController.
+ */
 #import <UIKit/UIKit.h>
 
 @class TSMenuManager;

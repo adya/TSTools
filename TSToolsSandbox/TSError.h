@@ -1,3 +1,20 @@
+/**
+ *  Author:     AdYa
+ *  Version:    2.0
+ *  iOS:        1.0+
+ *  Date:       02/16/2016
+ *  Status:     Updated
+ *
+ *  Dependency: None
+ *
+ *  Description:
+ *
+ *  TSError is a light-weighted NSError analog. Its' purpose is to gather user-presentable info.
+ *  This means that you should not put any programming details here.
+ *  Widely used in TSTools package to easily deliver presentable error message to user.
+ *
+ */
+
 #import <Foundation/Foundation.h>
 
 
@@ -11,18 +28,11 @@
 /** Default error, which hasn't got any category. */
 #define TS_ERROR_UNCLASSIFIED 0
 
+/** Represents error while processing purchases. */
+#define TS_ERROR_PURCHASE 100
+
 #endif
 
-
-/** 
- *  TSError is a light-weighted NSError analog. Its' purpose is to gather user-presentable info.
- *  This means that you should not put any programming details here.
- *  Widely used in TSTools package to easily deliver presentable error message to user.
- *
- *  Author: AdYa
- *  Version: 2.0
- *  Date: 02/16/2016
- */
 @interface TSError : NSObject
 
 /** Describes error in short phrase. */
@@ -43,28 +53,44 @@
 /** In case TSError was used to wrap NSError object, this object will be stored here. */
 @property NSError* underlyingError;
 
-- (TSError*) initWithCode:(NSInteger) code;
-- (TSError*) initWithCode:(NSInteger) code andTitle:(NSString*) title;
-- (TSError*) initWithCode:(NSInteger) code title:(NSString*) title andDescription:(NSString*) description;
+- (instancetype) initWithCode:(NSInteger) code;
 
-- (TSError*) initWithTitle:(NSString*) title;
-- (TSError*) initWithDescription:(NSString*) description;
-- (TSError*) initWithTitle:(NSString*) title andDescription:(NSString*) description;
+- (instancetype) initWithCode:(NSInteger) code
+                     andTitle:(NSString*) title;
 
-/** Wraps NSError object. */
-- (TSError*) initWithNSError:(NSError*) error;
+- (instancetype) initWithCode:(NSInteger) code
+                        title:(NSString*) title
+               andDescription:(NSString*) description NS_DESIGNATED_INITIALIZER;
 
+- (instancetype) initWithTitle:(NSString*) title;
 
-+ (TSError*) errorWithCode:(NSInteger) code;
-+ (TSError*) errorWithCode:(NSInteger) code andTitle:(NSString*) title;
-+ (TSError*) errorWithCode:(NSInteger) code title:(NSString*) title andDescription:(NSString*) description;
+- (instancetype) initWithDescription:(NSString*) description;
 
-+ (TSError*) errorWithTitle:(NSString*) title;
-+ (TSError*) errorWithDescription:(NSString*) description;
-+ (TSError*) errorWithTitle:(NSString*) title andDescription:(NSString*) description;
+- (instancetype) initWithTitle:(NSString*) title
+                andDescription:(NSString*) description;
 
 /** Wraps NSError object. */
-+ (TSError*) errorWithNSError:(NSError*) error;
+- (instancetype) initWithNSError:(NSError*) error;
+
+
++ (instancetype) errorWithCode:(NSInteger) code;
+
++ (instancetype) errorWithCode:(NSInteger) code
+                      andTitle:(NSString*) title;
+
++ (instancetype) errorWithCode:(NSInteger) code
+                         title:(NSString*) title
+                andDescription:(NSString*) description;
+
++ (instancetype) errorWithTitle:(NSString*) title;
+
++ (instancetype) errorWithDescription:(NSString*) description;
+
++ (instancetype) errorWithTitle:(NSString*) title
+                 andDescription:(NSString*) description;
+
+/** Wraps NSError object. */
++ (instancetype) errorWithNSError:(NSError*) error;
 
 
 @end

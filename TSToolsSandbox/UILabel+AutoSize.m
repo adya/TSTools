@@ -1,33 +1,30 @@
-//
-//  UILabel+AutoSize.m
-//  PictPerfect
-//
-//  Created by Adya on 11/02/2015.
-//  Copyright (c) 2015 vvteam. All rights reserved.
-//
 
 #import "UILabel+AutoSize.h"
 
 @implementation UILabel (AutoSize)
 
--(float)resizeToFit{
-    float height = [self expectedHeight];
+-(CGFloat) resizeToFitWithMaxHeight:(CGFloat) maxHeight {
+    float height = [self expectedHeightWithMaxHeight:maxHeight];
     CGRect newFrame = [self frame];
     newFrame.size.height = height;
     [self setFrame:newFrame];
     return newFrame.origin.y + newFrame.size.height;
 }
 
--(float)expectedHeight{
+-(CGFloat) expectedHeightWithMaxHeight:(CGFloat)maxHeight{
     [self setNumberOfLines:0];
-    [self setLineBreakMode:UILineBreakModeWordWrap];
-    
-    CGSize maximumLabelSize = CGSizeMake(self.frame.size.width,CGFLOAT_MAX);
-    
-    CGSize expectedLabelSize = [[self text] sizeWithFont:[self font]
-                                       constrainedToSize:maximumLabelSize
-                                           lineBreakMode:[self lineBreakMode]];
-    return expectedLabelSize.height;
+    [self setLineBreakMode:NSLineBreakByWordWrapping];
+    CGSize maximumLabelSize = CGSizeMake(self.bounds.size.width, maxHeight);
+    CGFloat height = [self.text boundingRectWithSize:maximumLabelSize options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading) attributes:@{NSFontAttributeName: self.font} context:nil].size.height;
+    return height;
+}
+
+-(CGFloat) resizeToFit {
+    return [self resizeToFitWithMaxHeight:CGFLOAT_MAX];
+}
+
+-(CGFloat) expectedHeight {
+    return [self expectedHeightWithMaxHeight:CGFLOAT_MAX];
 }
 
 @end

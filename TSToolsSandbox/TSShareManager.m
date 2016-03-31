@@ -89,7 +89,10 @@ NSString* const TSSocialShareTwitter = @"Twitter";
             
             if ([shareSocialDelegate respondsToSelector:@selector(onShareViewWillAppearWithService:)])
                 [shareSocialDelegate onShareViewWillAppearWithService:service];
-            [viewController presentViewController:shareSheet animated:YES completion:nil];
+            [viewController presentViewController:shareSheet animated:YES completion:^{
+                if ([shareSocialDelegate respondsToSelector:@selector(onShareViewDidAppearWithService:)])
+                    [shareSocialDelegate onShareViewDidAppearWithService:service];
+            }];
         }
         else
             [self requestSocialAccountSetup:service];
@@ -109,15 +112,23 @@ NSString* const TSSocialShareTwitter = @"Twitter";
     NSString* msg = [NSString stringWithFormat:@"%@ account was not setup", social];
     msg = [NSString stringWithFormat:@"%@. %@", msg, [NSString stringWithFormat:@"Please, go to Settings->%@ and login into your social account.", social]];
     NSString* accept = (autoOpenSettings ? @"Open Settings": @"Got it!");
+    if ([shareSocialDelegate respondsToSelector:@selector(onShareSetupRequestWillAppearWithService:)])
+        [shareSocialDelegate onShareSetupRequestWillAppearWithService:social];
     [TSNotifier alertWithTitle:[NSString stringWithFormat:@"Share %@", social]
                 message:msg
                 acceptButton:accept
                 acceptBlock:^{
+                    if ([shareSocialDelegate respondsToSelector:@selector(onShareSetupRequestWillDisappearWithService:)])
+                        [shareSocialDelegate onShareSetupRequestWillDisappearWithService:social];
                     if (autoOpenSettings)
                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                    
                 }
                 cancelButton:@"Later"
-                cancelBlock:nil];
+                   cancelBlock:^{
+                       if ([shareSocialDelegate respondsToSelector:@selector(onShareSetupRequestWillDisappearWithService:)])
+                           [shareSocialDelegate onShareSetupRequestWillDisappearWithService:social];
+                   }];
 }
 
 @end

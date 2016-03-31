@@ -1,10 +1,3 @@
-//
-//  ALAssetsLibrary category to handle a custom photo album
-//
-//  Created by Marin Todorov on 10/26/11.
-//  Copyright (c) 2011 Marin Todorov. All rights reserved.
-//
-
 #import "ALAssetsLibrary+CustomPhotoAlbum.h"
 
 @implementation ALAssetsLibrary(CustomPhotoAlbum)
@@ -38,28 +31,21 @@
                         usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
 
                             //compare the names of the albums
-                            if ([albumName compare: [group valueForProperty:ALAssetsGroupPropertyName]]==NSOrderedSame) {
+                            if ([albumName compare: [group valueForProperty:ALAssetsGroupPropertyName]] == NSOrderedSame) {
                                 
                                 //target album is found
                                 albumWasFound = YES;
                                 
                                 //get a hold of the photo's asset instance
-                                [self assetForURL: assetURL 
-                                      resultBlock:^(ALAsset *asset) {
-                                                  
-                                          //add photo to the target album
+                                [self assetForURL: assetURL resultBlock:^(ALAsset *asset) {
                                           [group addAsset: asset];
-                                          
-                                          //run the completion block
                                           completionBlock(nil);
                                           
-                                      } failureBlock: completionBlock];
-
-                                //album was found, bail out of the method
+                                } failureBlock: completionBlock];
                                 return;
                             }
                             
-                            if (group==nil && albumWasFound==NO) {
+                            if (!group && !albumWasFound) {
                                 //photo albums are over, target album does not exist, thus create it
                                 
                                 __weak ALAssetsLibrary* weakSelf = self;

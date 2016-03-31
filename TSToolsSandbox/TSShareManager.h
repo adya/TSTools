@@ -1,11 +1,19 @@
-//
-//  TSShareManager.h
-//  GridironMoe
-//
-//  Created by Adya on 11/17/15.
-//  Copyright (c) 2015 Ocusco Corporation. All rights reserved.
-//
-
+/**
+ *  Author:     AdYa
+ *  Version:    1.0
+ *  iOS:        6.0+
+ *  Date:       ../../2015
+ *  Status:     Outdated, Undocumented
+ *
+ *  Dependency: @framework Social,
+ *              @header TSNotifier,
+ *              @header TSUtils,
+ *              @header TSError
+ *
+ *  Description:
+ *
+ *  TSShareManager utilizes Social framework to easily share info on common social networks.
+ */
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -18,8 +26,15 @@ extern NSString* const TSSocialShareTwitter;
 
 -(NSString*) shareSocialMessageForService:(NSString*) service;
 
+    ///TODO: Rename this like failed callback;
+    /// And generally rework it.
+
 @optional -(void) onShareViewWillAppearWithService:(NSString*) service;
+@optional -(void) onShareViewDidAppearWithService:(NSString*) service;
 @optional -(void) onShareViewDidDisappearWithService:(NSString*) service shared:(BOOL) shared;
+@optional -(void) onShareSetupRequestWillAppearWithService:(NSString*) service;
+
+@optional -(void) onShareSetupRequestWillDisappearWithService:(NSString*) service;
 @optional -(void) onShareWithService:(NSString*) service failedWithError:(TSError*) error;
 
 @end

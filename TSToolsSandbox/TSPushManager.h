@@ -1,3 +1,17 @@
+/**
+ *  Author:     AdYa
+ *  Version:    1.0
+ *  iOS:        [3.0; 8.0)
+ *  Date:       03/../2016
+ *  Status:     In Progress, Undocumented
+ *
+ *  Dependency: @framework LMAlertView, 
+ *              @header TSUtils
+ *
+ *  Description:
+ *
+ *  TSAlert provides neat way to show simple alert with title, message accept and, optionally, cancel buttons with custom button handlers defined as blocks in a single line of code.
+ */
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
