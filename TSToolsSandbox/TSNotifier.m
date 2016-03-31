@@ -2,7 +2,7 @@
 #import "MBProgressHUD.h"
 #import "TSError.h"
 #import "TSUtils.h"
-#import "LMAlertView.h"
+
 #import "UIWindow+UIWindow+PresentedViewController.h"
 
 #define PRESENTED_VIEW [UIViewController presentedViewController].view
@@ -12,7 +12,6 @@
 #define DEFAULT_APPEARANCE nil
 #define DEFAULT_TIME_INTERVAL TS_NOTIFICATION_TIME_NORMAL
 
-static BOOL loggingEnabled = YES;
 
 NSString* const kTSNotificationAppearanceNotificationColor = @"TSNotAppBGColor";
 NSString* const kTSNotificationAppearanceNotificationOpacity = @"TSNotAppBGOpacity";
@@ -25,33 +24,7 @@ NSString* const kTSNotificationAppearancePosition = @"TSNotAppPosition";
 NSString* const kTSNotificationAppearancePositionXOffset = @"TSNotAppPosXOffset";
 NSString* const kTSNotificationAppearancePositionYOffset = @"TSNotAppPosYOffset";
 
-// Helper to delegate callbacks from buttons
-@interface TSAlertViewDelegate  : NSObject <UIAlertViewDelegate>
-
-+(TSAlertViewDelegate*) sharedDelegate;
--(void) setCallbacksAccept:(ButtonCallback)accept andCancel:(ButtonCallback) cancel;
-
-@end
-
 @implementation TSNotifier
-
-+(void) log:(NSString*) message{
-    [self logWithTitle:APP_NAME message:message];
-}
-+(void) logWithTitle:(NSString*) title message:(NSString*) msg{
-    if (!loggingEnabled || (nonEmpty(title) && nonEmpty(msg))) return;
-    if (!nonEmpty(title) && !nonEmpty(msg))
-        NSLog(@"%@ : %@", title, msg);
-    else
-        NSLog(@"%@", (nonEmpty(title) ? title : msg));
-}
-+(void) logMethod:(NSString *)method{
-    [self logWithTitle:@"NOT IMPLEMENTED" message:method];
-}
-
-+(void) setLoggingEnabled:(BOOL)enabled{
-    loggingEnabled = enabled;
-}
 
 /// Determines where to put text in main label or details label
 +(void) setText:(NSString*) text withAppearance:(NSDictionary*)appearance forHUD:(MBProgressHUD*)hud onView:(UIView*) view{
@@ -160,73 +133,7 @@ NSString* const kTSNotificationAppearancePositionYOffset = @"TSNotAppPosYOffset"
     }
 }
 
-@end
-
-
-@implementation TSNotifier (Alerts)
-
-+(void) alert:(NSString*) message{
-    [self alert:message acceptButton:nil];
-}
-+(void) alert:(NSString *)message acceptButton:(NSString *)ok{
-    [self alert:message acceptButton:ok acceptBlock:nil];
-}
-+(void) alert:(NSString *)message acceptButton:(NSString *)ok acceptBlock:(ButtonCallback)acceptBlock{
-    [self alert:message acceptButton:ok acceptBlock:acceptBlock cancelButton:nil cancelBlock:nil];
-}
-+(void) alert:(NSString*) message acceptButton:(NSString*) ok acceptBlock:(ButtonCallback) acceptBlock cancelButton:(NSString*) cancel cancelBlock:(ButtonCallback) cancelBlock{
-    [self alertWithTitle:APP_NAME message:message acceptButton:ok acceptBlock:acceptBlock cancelButton:cancel cancelBlock:cancelBlock];
-}
-
-+(void) alertWithTitle:(NSString*) title message: (NSString*) msg{
-    [self alertWithTitle:title message:msg acceptButton:nil acceptBlock:nil];
-}
-+(void) alertWithTitle:(NSString *)title message:(NSString *)msg acceptButton:(NSString*) ok acceptBlock:(ButtonCallback) acceptBlock{
-    [self alertWithTitle:title message:msg acceptButton:ok acceptBlock:acceptBlock cancelButton:nil cancelBlock:nil];
-}
-+(void) alertWithTitle:(NSString *)title message:(NSString *)msg acceptButton:(NSString*) ok acceptBlock:(ButtonCallback) acceptBlock cancelButton:(NSString*) cancel cancelBlock:(ButtonCallback) cancelBlock{
-    [self logWithTitle:title message:msg];
-    TSAlertViewDelegate* delegate = [TSAlertViewDelegate sharedDelegate];
-    [delegate setCallbacksAccept:acceptBlock andCancel:cancelBlock];
-    if (!ok) ok = @"OK";
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate: delegate cancelButtonTitle:cancel otherButtonTitles:ok, nil];
-//    LMAlertView* alert = [[LMAlertView alloc] initWithTitle:title message:msg delegate:delegate cancelButtonTitle:cancel otherButtonTitles:ok, nil];
-//    UILabel* label = ((UILabel*)[alert.contentView.subviews objectAtIndex:1]);
-//    label.textAlignment = NSTextAlignmentCenter;
-    [alert show];
-}
-
-+(void) alertWithTitle:(NSString*) title message:(NSString*) msg withAlignment:(NSTextAlignment) alignment acceptButton:(NSString*) ok acceptBlock:(ButtonCallback) acceptBlock cancelButton:(NSString*) cancel cancelBlock:(ButtonCallback) cancelBlock{
-    [self logWithTitle:title message:msg];
-    TSAlertViewDelegate* delegate = [TSAlertViewDelegate sharedDelegate];
-    [delegate setCallbacksAccept:acceptBlock andCancel:cancelBlock];
-    if (!ok) ok = @"OK";
-    LMAlertView* alert = [[LMAlertView alloc] initWithTitle:title message:msg delegate:delegate cancelButtonTitle:cancel otherButtonTitles:ok, nil];
-    ((UILabel*)[alert.contentView.subviews objectAtIndex:1]).textAlignment = alignment;
-//    [[UIAlertView alloc] initWithTitle:title message:msg delegate: delegate cancelButtonTitle:cancel otherButtonTitles:ok, nil];
-    
-    [alert show];
-
-}
-
-
-+(void) alertError:(TSError *)error{
-    [self alertError:error acceptButton:nil acceptBlock:nil];
-}
-
-+(void) alertError:(TSError*)error acceptButton:(NSString*)ok acceptBlock:(ButtonCallback) acceptBlock{
-    [self alertError:error acceptButton:ok acceptBlock:acceptBlock cancelButton:nil cancelBlock:nil];
-}
-+(void) alertError:(TSError*)error acceptButton:(NSString*)ok acceptBlock:(ButtonCallback) acceptBlock cancelButton:(NSString*)cancel cancelBlock:(ButtonCallback) cancelBlock{
-    if (!error.title || [error.title isEqualToString:@""])
-        [self alertWithTitle:APP_NAME message:error.description acceptButton:ok acceptBlock:acceptBlock cancelButton:cancel cancelBlock:cancelBlock];
-    else
-        [self alertWithTitle:error.title message:error.description acceptButton:ok acceptBlock:acceptBlock cancelButton:cancel cancelBlock:cancelBlock];
-}
-
-@end
-
-@implementation TSNotifier (Notifications)
+#pragma mark - Notifications
 
 +(void) notify:(NSString*) message{
     [self notify:message withAppearance:DEFAULT_APPEARANCE];
@@ -301,11 +208,7 @@ NSString* const kTSNotificationAppearancePositionYOffset = @"TSNotAppPosYOffset"
     [MBProgressHUD hideHUDForView:view animated:YES];
 }
 
-
-@end
-
-@implementation TSNotifier (ProgressBars)
-
+#pragma mark - Progress indicator
 
 +(void) showProgressOnView:(UIView*)view{
     [self showProgressWithMessage:DEFAULT_MESSAGE onView:view];
@@ -335,40 +238,6 @@ NSString* const kTSNotificationAppearancePositionYOffset = @"TSNotAppPosYOffset"
 }
 +(void) hideProgressOnView:(UIView*)view{
     [MBProgressHUD hideHUDForView:view animated:YES];
-}
-
-@end
-
-@implementation TSAlertViewDelegate{
-    ButtonCallback accept;
-    ButtonCallback cancel;
-}
-
-+(instancetype) sharedDelegate{
-    static TSAlertViewDelegate* delegate = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{delegate = [[self alloc] init];});
-    return delegate;
-}
-
--(void) setCallbacksAccept:(ButtonCallback)_accept andCancel:(ButtonCallback)_cancel{
-    accept = _accept;
-    cancel = _cancel;
-}
-
--(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == alertView.cancelButtonIndex){
-        if (cancel)
-            cancel();
-        else
-            [TSNotifier log:@"Cancel callback wasn't defined."];
-    }
-    else {
-        if (accept)
-            accept();
-        else
-            [TSNotifier log:@"Accept callback wasn't defined."];
-    }
 }
 
 @end
