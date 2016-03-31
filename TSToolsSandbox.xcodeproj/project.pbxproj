@@ -32,6 +32,9 @@
 		604D691D1C81E53B0035164B /* UILabel+AutoSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 604D690B1C81E53B0035164B /* UILabel+AutoSize.m */; };
 		604D691E1C81E53B0035164B /* UIWindow+UIWindow+PresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 604D690D1C81E53B0035164B /* UIWindow+UIWindow+PresentedViewController.m */; };
 		604D69221C81EF580035164B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 604D69211C81EF580035164B /* Podfile */; };
+		609AF1C81CAC1F9D00CC9441 /* TSPurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 609AF1C61CAC1F9D00CC9441 /* TSPurchaseManager.m */; };
+		609AF1CB1CAD9E2300CC9441 /* TSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 609AF1CA1CAD9E2300CC9441 /* TSLogger.m */; };
+		609AF1CE1CADA0D700CC9441 /* TSAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 609AF1CD1CADA0D700CC9441 /* TSAlert.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +85,13 @@
 		604D690C1C81E53B0035164B /* UIWindow+UIWindow+PresentedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+UIWindow+PresentedViewController.h"; sourceTree = "<group>"; };
 		604D690D1C81E53B0035164B /* UIWindow+UIWindow+PresentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+UIWindow+PresentedViewController.m"; sourceTree = "<group>"; };
 		604D69211C81EF580035164B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		609AF1C51CAC1F9D00CC9441 /* TSPurchaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPurchaseManager.h; sourceTree = "<group>"; };
+		609AF1C61CAC1F9D00CC9441 /* TSPurchaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPurchaseManager.m; sourceTree = "<group>"; };
+		609AF1C71CAC1F9D00CC9441 /* TSPurchaseManagerProtected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPurchaseManagerProtected.h; sourceTree = "<group>"; };
+		609AF1C91CAD9E2300CC9441 /* TSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSLogger.h; sourceTree = "<group>"; };
+		609AF1CA1CAD9E2300CC9441 /* TSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLogger.m; sourceTree = "<group>"; };
+		609AF1CC1CADA0D700CC9441 /* TSAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAlert.h; sourceTree = "<group>"; };
+		609AF1CD1CADA0D700CC9441 /* TSAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAlert.m; sourceTree = "<group>"; };
 		75C0089ACBF89CFF56E5D99C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00173E7D1408F28BD15059E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,21 +156,23 @@
 		604D68E91C81E51C0035164B /* TSTools */ = {
 			isa = PBXGroup;
 			children = (
-				604D68EB1C81E53B0035164B /* ALAssetsLibrary+CustomPhotoAlbum.h */,
-				604D68EC1C81E53B0035164B /* ALAssetsLibrary+CustomPhotoAlbum.m */,
+				609AF1C51CAC1F9D00CC9441 /* TSPurchaseManager.h */,
+				609AF1C61CAC1F9D00CC9441 /* TSPurchaseManager.m */,
+				609AF1C71CAC1F9D00CC9441 /* TSPurchaseManagerProtected.h */,
 				604D68ED1C81E53B0035164B /* TSContactsManager.h */,
 				604D68EE1C81E53B0035164B /* TSContactsManager.m */,
-				604D68EF1C81E53B0035164B /* TSCurrencyTextField.h */,
-				604D68F01C81E53B0035164B /* TSCurrencyTextField.m */,
 				604D68F11C81E53B0035164B /* TSError.h */,
 				604D68F21C81E53B0035164B /* TSError.m */,
-				604D68F31C81E53B0035164B /* TSJSONParselable.h */,
 				604D68F41C81E53B0035164B /* TSMenuManager.h */,
 				604D68F51C81E53B0035164B /* TSMenuManager.m */,
 				604D68F61C81E53B0035164B /* TSNotificationManager.h */,
 				604D68F71C81E53B0035164B /* TSNotificationManager.m */,
 				604D68F81C81E53B0035164B /* TSNotifier.h */,
 				604D68F91C81E53B0035164B /* TSNotifier.m */,
+				609AF1CC1CADA0D700CC9441 /* TSAlert.h */,
+				609AF1CD1CADA0D700CC9441 /* TSAlert.m */,
+				609AF1C91CAD9E2300CC9441 /* TSLogger.h */,
+				609AF1CA1CAD9E2300CC9441 /* TSLogger.m */,
 				604D68FA1C81E53B0035164B /* TSPushManager.h */,
 				604D68FB1C81E53B0035164B /* TSPushManager.m */,
 				604D68FC1C81E53B0035164B /* TSRequestManager.h */,
@@ -181,6 +193,11 @@
 				604D690B1C81E53B0035164B /* UILabel+AutoSize.m */,
 				604D690C1C81E53B0035164B /* UIWindow+UIWindow+PresentedViewController.h */,
 				604D690D1C81E53B0035164B /* UIWindow+UIWindow+PresentedViewController.m */,
+				604D68EF1C81E53B0035164B /* TSCurrencyTextField.h */,
+				604D68F01C81E53B0035164B /* TSCurrencyTextField.m */,
+				604D68F31C81E53B0035164B /* TSJSONParselable.h */,
+				604D68EB1C81E53B0035164B /* ALAssetsLibrary+CustomPhotoAlbum.h */,
+				604D68EC1C81E53B0035164B /* ALAssetsLibrary+CustomPhotoAlbum.m */,
 			);
 			name = TSTools;
 			sourceTree = "<group>";
@@ -333,9 +350,12 @@
 			files = (
 				604D691C1C81E53B0035164B /* UIImageView+AFNetworking+Animated.m in Sources */,
 				604D69191C81E53B0035164B /* TSStorage.m in Sources */,
+				609AF1CB1CAD9E2300CC9441 /* TSLogger.m in Sources */,
 				604D68DA1C81E4270035164B /* ViewController.m in Sources */,
+				609AF1C81CAC1F9D00CC9441 /* TSPurchaseManager.m in Sources */,
 				604D69121C81E53B0035164B /* TSMenuManager.m in Sources */,
 				604D691D1C81E53B0035164B /* UILabel+AutoSize.m in Sources */,
+				609AF1CE1CADA0D700CC9441 /* TSAlert.m in Sources */,
 				604D691E1C81E53B0035164B /* UIWindow+UIWindow+PresentedViewController.m in Sources */,
 				604D69141C81E53B0035164B /* TSNotifier.m in Sources */,
 				604D69111C81E53B0035164B /* TSError.m in Sources */,

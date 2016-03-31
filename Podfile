@@ -14,7 +14,7 @@ pod 'LMAlertView'
 # Masked label
 # pod 'ZBarSDK'
 # Essential Barcode processing library
-# pod 'REMenu', '~> 1.10'
+pod 'REMenu', '~> 1.10'
 # Nice dropdown menu
 # pod 'TestFairy'
 # pod 'Bolts'

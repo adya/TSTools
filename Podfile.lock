@@ -20,11 +20,13 @@ PODS:
     - RBBAnimation (~> 0.3.0)
   - MBProgressHUD (0.9.2)
   - RBBAnimation (0.3.0)
+  - REMenu (1.10)
 
 DEPENDENCIES:
   - AFNetworking
   - LMAlertView
   - MBProgressHUD
+  - REMenu (~> 1.10)
 
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
@@ -32,5 +34,6 @@ SPEC CHECKSUMS:
   LMAlertView: fa4589ea2cb540b888636ff6739fc39b16ac1e4b
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   RBBAnimation: cb6cb419f511434ce932f7d0fabf369612fafb4e
+  REMenu: 30dad195930adf6c5eeb8041e3257aa60bf9fa49
 
 COCOAPODS: 0.39.0
