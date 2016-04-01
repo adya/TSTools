@@ -25,22 +25,22 @@ Nice dropdown menu
 
 ### Other useful pods ###
 
-* [pod '**IQKeyboardManager**'](https://github.com/hackiftekhar/IQKeyboardManager)     
+* [pod '**IQKeyboardManager**'](https://github.com/hackiftekhar/IQKeyboardManager)    
 Essential pod which manages keyboard for you.
 
-* [pod '**ActionSheetPicker-3.0**'](https://github.com/skywinder/ActionSheetPicker-3.0) 
+* [pod '**ActionSheetPicker-3.0**'](https://github.com/skywinder/ActionSheetPicker-3.0)
 Easily present an ActionSheet with a PickerView, allowing user to select from a number of immutable options.
 
-* [pod '**KLCPopup**'](https://github.com/jmascia/KLCPopup)             
+* [pod '**KLCPopup**'](https://github.com/jmascia/KLCPopup)
 Simple and flexible iOS class for presenting any custom view as a popup.
 
 * [pod '**HMSegmentedControl**'](https://github.com/HeshamMegid/HMSegmentedControl)
 Nice customizable replacement for UISegmentedControl.
 
-* [pod '**TTTAttributedLabel**'](https://github.com/TTTAttributedLabel/TTTAttributedLabel)   
+* [pod '**TTTAttributedLabel**'](https://github.com/TTTAttributedLabel/TTTAttributedLabel)
 A drop-in replacement for UILabel that supports attributes, data detectors, links, and more.
 
-* [pod '**TestFairy**'](http://testfairy.com/)             
+* [pod '**TestFairy**'](http://testfairy.com/)
 Provides easy app delivering to testers.
 
 * [pod '**RESwitch**'](https://github.com/romaonthego/RESwitch)
@@ -49,5 +49,5 @@ Open source alternative to UISwitch, customizable via UIAppearance protocol.
 * [pod '**REFormattedNumberField**'](https://github.com/romaonthego/REFormattedNumberField)
 UITextField subclass that allows numeric input in a predefined format.
 
-* [pod '**ZBarSDK**'](http://zbar.sourceforge.net/iphone/index.html)               
+* [pod '**ZBarSDK**'](http://zbar.sourceforge.net/iphone/index.html)
 Essential Barcode processing library.
