@@ -52,7 +52,7 @@ typedef BOOL (^TSNotificationValidatingBlock)(UILocalNotification* _Nonnull noti
     @param date Scheduled date and time.
  */
 + (void) scheduleNotificationWithMessage:(nonnull NSString*) notificationMessage
-                             withHandler:(_Nonnull TSNotificationBlock) handler
+                             withHandler:(TSNotificationBlock _Nonnull) handler
                                       on:(nonnull NSDate*) date;
 
 /** Schedules notification on given date with specified message, handler and additional user info dictionary.
@@ -64,7 +64,7 @@ typedef BOOL (^TSNotificationValidatingBlock)(UILocalNotification* _Nonnull noti
  */
 + (void) scheduleNotificationWithMessage:(nonnull NSString*) notificationMessage
                              andUserInfo:(nullable NSDictionary*) userInfo
-                             withHandler:(_Nonnull TSNotificationBlock) handler
+                             withHandler:(TSNotificationBlock _Nonnull) handler
                                       on:(nonnull NSDate*) date;
 
 /** Schedules notification on given date with specified message and handler. Date will be represented in specified time zone.
@@ -74,7 +74,7 @@ typedef BOOL (^TSNotificationValidatingBlock)(UILocalNotification* _Nonnull noti
     @param timeZone Custom time zone which will be used to convert date.
  */
 + (void) scheduleNotificationWithMessage:(nonnull NSString*) notificationMessage
-                             withHandler:(_Nonnull TSNotificationBlock) handler
+                             withHandler:(TSNotificationBlock _Nonnull) handler
                                       on:(nonnull NSDate*) date
                             withTimeZone:(nullable NSTimeZone*) timeZone;
 
@@ -87,7 +87,7 @@ typedef BOOL (^TSNotificationValidatingBlock)(UILocalNotification* _Nonnull noti
  */
 + (void) scheduleNotificationWithMessage:(nonnull NSString*) notificationMessage
                              andUserInfo:(nullable NSDictionary*) userInfo
-                             withHandler:(_Nonnull TSNotificationBlock) handler
+                             withHandler:(TSNotificationBlock _Nonnull) handler
                                       on:(nonnull NSDate*) date
                             withTimeZone:(nullable NSTimeZone*) timeZone;
 

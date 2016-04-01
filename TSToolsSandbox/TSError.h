@@ -36,13 +36,13 @@
 @interface TSError : NSObject
 
 /** Describes error in short phrase. */
-@property NSString* title;
+@property (nonnull) NSString* title;
 
 /** 
  *  Contains error details and explanations for user.
  *  This means you should not put any programming details here. User-presentable info only.
  */
-@property NSString* description;
+@property (nullable) NSString* description;
 
 /** 
  *  Contains error code identifying an error type.
@@ -51,46 +51,48 @@
 @property NSInteger code;
 
 /** In case TSError was used to wrap NSError object, this object will be stored here. */
-@property NSError* underlyingError;
+@property (nullable) NSError* underlyingError;
 
-- (instancetype) initWithCode:(NSInteger) code;
+/** Variety of self-explanatory init and factory methods. */
 
-- (instancetype) initWithCode:(NSInteger) code
-                     andTitle:(NSString*) title;
+- (nonnull instancetype) initWithCode:(NSInteger) code;
 
-- (instancetype) initWithCode:(NSInteger) code
-                        title:(NSString*) title
-               andDescription:(NSString*) description NS_DESIGNATED_INITIALIZER;
+- (nonnull instancetype) initWithCode:(NSInteger) code
+                     andTitle:(nonnull NSString*) title;
 
-- (instancetype) initWithTitle:(NSString*) title;
+- (nonnull instancetype) initWithCode:(NSInteger) code
+                        title:(nonnull NSString*) title
+               andDescription:(nullable NSString*) description NS_DESIGNATED_INITIALIZER;
 
-- (instancetype) initWithDescription:(NSString*) description;
+- (nonnull instancetype) initWithTitle:(nonnull NSString*) title;
 
-- (instancetype) initWithTitle:(NSString*) title
-                andDescription:(NSString*) description;
+- (nonnull instancetype) initWithDescription:(nonnull NSString*) description;
 
-/** Wraps NSError object. */
-- (instancetype) initWithNSError:(NSError*) error;
-
-
-+ (instancetype) errorWithCode:(NSInteger) code;
-
-+ (instancetype) errorWithCode:(NSInteger) code
-                      andTitle:(NSString*) title;
-
-+ (instancetype) errorWithCode:(NSInteger) code
-                         title:(NSString*) title
-                andDescription:(NSString*) description;
-
-+ (instancetype) errorWithTitle:(NSString*) title;
-
-+ (instancetype) errorWithDescription:(NSString*) description;
-
-+ (instancetype) errorWithTitle:(NSString*) title
-                 andDescription:(NSString*) description;
+- (nonnull instancetype) initWithTitle:(nonnull NSString*) title
+                andDescription:(nullable NSString*) description;
 
 /** Wraps NSError object. */
-+ (instancetype) errorWithNSError:(NSError*) error;
+- (nonnull instancetype) initWithNSError:(nonnull NSError*) error;
+
+
++ (nonnull instancetype) errorWithCode:(NSInteger) code;
+
++ (nonnull instancetype) errorWithCode:(NSInteger) code
+                      andTitle:(nonnull NSString*) title;
+
++ (nonnull instancetype) errorWithCode:(NSInteger) code
+                         title:(nonnull NSString*) title
+                andDescription:(nullable NSString*) description;
+
++ (nonnull instancetype) errorWithTitle:(nonnull NSString*) title;
+
++ (nonnull instancetype) errorWithDescription:(nonnull NSString*) description;
+
++ (nonnull instancetype) errorWithTitle:(nonnull NSString*) title
+                 andDescription:(nullable NSString*) description;
+
+/** Wraps NSError object. */
++ (nonnull instancetype) errorWithNSError:(nonnull NSError*) error;
 
 
 @end

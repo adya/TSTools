@@ -1,16 +1,9 @@
-//
-//  TSShareManager.m
-//  GridironMoe
-//
-//  Created by Adya on 11/17/15.
-//  Copyright (c) 2015 Ocusco Corporation. All rights reserved.
-//
-
 #import "TSShareManager.h"
 #import <Social/Social.h>
 #import "TSUtils.h"
 #import "TSNotifier.h"
 #import "TSError.h"
+#import "TSAlert.h"
 
 NSString* const TSSocialShareFacebook = @"Facebook";
 NSString* const TSSocialShareTwitter = @"Twitter";
@@ -49,14 +42,7 @@ NSString* const TSSocialShareTwitter = @"Twitter";
 
 
 - (void) shareWithService:(NSString*) service onViewController:(UIViewController*) viewController{
-    NSString* msg;
-    if ([shareSocialDelegate respondsToSelector:@selector(shareSocialMessageForService:)]){
-        msg = [shareSocialDelegate shareSocialMessageForService:service];
-    }
-    else{
-        NSLog([self.class description], @"Delegate doesn't define default sharing message");
-    }
-    [self shareMessage:msg withService:service onViewController:viewController];
+    [self shareMessage:nil withService:service onViewController:viewController];
 }
 
 -(void) shareMessage:(NSString *)message withService:(NSString *)service onViewController:(UIViewController *)viewController {
@@ -114,7 +100,7 @@ NSString* const TSSocialShareTwitter = @"Twitter";
     NSString* accept = (autoOpenSettings ? @"Open Settings": @"Got it!");
     if ([shareSocialDelegate respondsToSelector:@selector(onShareSetupRequestWillAppearWithService:)])
         [shareSocialDelegate onShareSetupRequestWillAppearWithService:social];
-    [TSNotifier alertWithTitle:[NSString stringWithFormat:@"Share %@", social]
+    [TSAlert alertWithTitle:[NSString stringWithFormat:@"Share %@", social]
                 message:msg
                 acceptButton:accept
                 acceptBlock:^{

@@ -51,5 +51,5 @@
 @end
 
 @interface TSProduct (Inheritance)
-@property SKProduct* _Nonnull underlyingProduct;
+@property (nonnull) SKProduct* underlyingProduct;
 @end

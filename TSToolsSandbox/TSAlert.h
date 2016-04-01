@@ -27,13 +27,13 @@ typedef void(^TSAlertButtonCallback)();
 
 +(void) alert:(nonnull NSString*) message
  acceptButton:(nullable NSString*) ok
-  acceptBlock:(_Nullable TSAlertButtonCallback) acceptBlock;
+  acceptBlock:(TSAlertButtonCallback _Nullable) acceptBlock;
 
 +(void) alert:(nonnull NSString*) message
  acceptButton:(nullable NSString*) ok
-  acceptBlock:(_Nullable TSAlertButtonCallback) acceptBlock
+  acceptBlock:(TSAlertButtonCallback _Nullable) acceptBlock
  cancelButton:(nonnull NSString*) cancel
-  cancelBlock:(_Nullable TSAlertButtonCallback) cancelBlock;
+  cancelBlock:(TSAlertButtonCallback _Nullable) cancelBlock;
 
 +(void) alertWithTitle:(nonnull NSString*) title
                message:(nonnull NSString*) msg;
@@ -41,32 +41,32 @@ typedef void(^TSAlertButtonCallback)();
 +(void) alertWithTitle:(nonnull NSString*) title
                message:(nonnull NSString*) msg
           acceptButton:(nullable NSString*) ok
-           acceptBlock:(_Nullable TSAlertButtonCallback) acceptBlock;
+           acceptBlock:(TSAlertButtonCallback _Nullable) acceptBlock;
 
 +(void) alertWithTitle:(nonnull NSString*) title
                message:(nonnull NSString*) msg
-          acceptButton:(nonnull NSString*) ok
-           acceptBlock:(_Nullable TSAlertButtonCallback) acceptBlock
-          cancelButton:(nonnull NSString*) cancel
-           cancelBlock:(_Nullable TSAlertButtonCallback) cancelBlock;
+          acceptButton:(nullable NSString*) ok
+           acceptBlock:(TSAlertButtonCallback _Nullable) acceptBlock
+          cancelButton:(nullable NSString*) cancel
+           cancelBlock:(TSAlertButtonCallback _Nullable) cancelBlock;
 
-+(void) alertWithTitle:(NSString*) title
-               message:(NSString*) msg
++(void) alertWithTitle:(nonnull NSString*) title
+               message:(nonnull NSString*) msg
          withAlignment:(NSTextAlignment) alignment
-          acceptButton:(NSString*) ok
-           acceptBlock:(TSAlertButtonCallback) acceptBlock
-          cancelButton:(NSString*) cancel
-           cancelBlock:(TSAlertButtonCallback) cancelBlock;
+          acceptButton:(nullable NSString*) ok
+           acceptBlock:(TSAlertButtonCallback _Nullable) acceptBlock
+          cancelButton:(nullable NSString*) cancel
+           cancelBlock:(TSAlertButtonCallback _Nullable) cancelBlock;
 
-+(void) alertError:(TSError*)error;
++(void) alertError:(nonnull TSError*) error;
 
-+(void) alertError:(TSError*)error
-      acceptButton:(NSString*)ok
-       acceptBlock:(TSAlertButtonCallback) acceptBlock;
++(void) alertError:(nonnull TSError*) error
+      acceptButton:(nullable NSString*) ok
+       acceptBlock:(TSAlertButtonCallback _Nullable) acceptBlock;
 
-+(void) alertError:(TSError*)error
-      acceptButton:(NSString*)ok
-       acceptBlock:(TSAlertButtonCallback) acceptBlock
-      cancelButton:(NSString*)cancel
-       cancelBlock:(TSAlertButtonCallback) cancelBlock;
++(void) alertError:(nonnull TSError*) error
+      acceptButton:(nullable NSString*) ok
+       acceptBlock:(TSAlertButtonCallback _Nullable) acceptBlock
+      cancelButton:(nullable NSString*) cancel
+       cancelBlock:(TSAlertButtonCallback _Nullable) cancelBlock;
 @end

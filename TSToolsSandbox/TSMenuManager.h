@@ -25,17 +25,17 @@
 
 @protocol TSMenuManagerItemsProvider
 
--(NSArray<REMenuItem*>*) getMenuItemsForViewController:(UIViewController*)controller;
+-(nonnull NSArray<REMenuItem*>*) getMenuItemsForViewController:(nonnull UIViewController*)controller;
 
 @end
 
 @interface TSMenuManager : NSObject
 
-@property (nonatomic, weak) id<TSMenuManagerItemsProvider> _Nullable itemsProvider;
+@property (weak, nullable) id<TSMenuManagerItemsProvider> itemsProvider;
 
-@property (readonly) REMenu* _Nonnull menu;
+@property (readonly, nonnull) REMenu* menu;
 
--(nonnull id) initForViewController:(nonnull UIViewController*) viewController;
+-(nonnull instancetype) initForViewController:(nonnull UIViewController*) viewController;
 -(void) toggleMenu;
 -(void) toggleMenu:(BOOL) open;
 -(void) updateMenu;

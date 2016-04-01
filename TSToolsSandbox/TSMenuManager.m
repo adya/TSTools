@@ -10,7 +10,7 @@
 
 @synthesize menu;
 
--(id) itemsProvider{
+-(id<TSMenuManagerItemsProvider>) itemsProvider{
     return itemsProvider;
 }
 
@@ -19,7 +19,7 @@
     [self updateMenu];
 }
 
--(id) initForViewController:(UIViewController *)viewController{
+-(instancetype) initForViewController:(UIViewController *)viewController{
     self = [super init];
     managedViewController = viewController;
     return self;

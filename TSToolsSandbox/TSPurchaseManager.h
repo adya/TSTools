@@ -102,10 +102,10 @@
 
 +(nonnull instancetype) sharedManager;
 
-@property id<TSPurchaseManagerDelegate> _Nullable delegate;
-@property id<TSPurchaseManagerInitDelegate> _Nullable initDelegate;
-@property (readonly) NSArray<TSProduct*>* _Nonnull products;
-@property (readonly) NSArray<NSString*>* _Nonnull productsIdentifiers;
+@property (weak, nullable) id<TSPurchaseManagerDelegate> delegate;
+@property (weak, nullable) id<TSPurchaseManagerInitDelegate> initDelegate;
+@property (readonly, nonnull) NSArray<TSProduct*>* products;
+@property (readonly, nonnull) NSArray<NSString*>* productsIdentifiers;
 
 /** Initializes manager. */
 -(void) startManager;
@@ -150,14 +150,14 @@
 
 /** Wrapper of SKProduct class designed to allow subclassing of SKProduct and therefore further customization. */
 @interface TSProduct: NSObject 
-    @property(readonly) NSString* _Nonnull localizedDescription NS_AVAILABLE_IOS(3_0);
-    @property(readonly) NSString* _Nonnull localizedTitle NS_AVAILABLE_IOS(3_0);
-    @property(readonly) NSString* _Nonnull localizedPrice NS_AVAILABLE_IOS(3_0);
-    @property(readonly) NSDecimalNumber* _Nonnull price NS_AVAILABLE_IOS(3_0);
-    @property(readonly) NSLocale* _Nonnull priceLocale NS_AVAILABLE_IOS(3_0);
-    @property(readonly) NSString* _Nonnull productIdentifier NS_AVAILABLE_IOS(3_0);
+    @property(readonly, nonnull) NSString* localizedDescription NS_AVAILABLE_IOS(3_0);
+    @property(readonly, nonnull) NSString* localizedTitle NS_AVAILABLE_IOS(3_0);
+    @property(readonly, nonnull) NSString* localizedPrice NS_AVAILABLE_IOS(3_0);
+    @property(readonly, nonnull) NSDecimalNumber* price NS_AVAILABLE_IOS(3_0);
+    @property(readonly, nonnull) NSLocale* priceLocale NS_AVAILABLE_IOS(3_0);
+    @property(readonly, nonnull) NSString* productIdentifier NS_AVAILABLE_IOS(3_0);
     @property(readonly, getter=isDownloadable) BOOL downloadable NS_AVAILABLE_IOS(6_0);
-    @property(readonly) NSArray<NSNumber *>* _Nonnull downloadContentLengths NS_AVAILABLE_IOS(6_0);
-    @property(readonly) NSString* _Nonnull downloadContentVersion NS_AVAILABLE_IOS(6_0);
+    @property(readonly, nonnull) NSArray<NSNumber*>* downloadContentLengths NS_AVAILABLE_IOS(6_0);
+    @property(readonly, nonnull) NSString* downloadContentVersion NS_AVAILABLE_IOS(6_0);
 
 @end

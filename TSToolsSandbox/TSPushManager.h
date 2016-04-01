@@ -5,12 +5,11 @@
  *  Date:       03/../2016
  *  Status:     In Progress, Undocumented
  *
- *  Dependency: @framework LMAlertView, 
- *              @header TSUtils
+ *  Dependency: @header TSUtils
  *
  *  Description:
  *
- *  TSAlert provides neat way to show simple alert with title, message accept and, optionally, cancel buttons with custom button handlers defined as blocks in a single line of code.
+ *  Not implemented Manager. Still has no clear design and purposes. 
  */
 
 #import <Foundation/Foundation.h>

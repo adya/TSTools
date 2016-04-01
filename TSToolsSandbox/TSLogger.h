@@ -19,12 +19,12 @@
 
 #define TS_LOG_TITLE_ERROR @"Error"
 #define TS_LOG_TITLE_NOT_IMPLEMENTED @"Not Implemented"
-#define TS_LOG_TITLE_CLASS(cls) cls.class
+#define TS_LOG_TITLE_CLASS(obj) NSStringFromClass([obj class])
 #define TS_LOG_TITLE_APP_NAME APP_NAME
 
 @interface TSLogger : NSObject
 +(void) log:(nonnull NSString*) message;
 +(void) logWithTitle:(nonnull NSString*) title message:(nonnull NSString*) msg;
 
-+(void) setLoggingEnabled:(BOOL)enabled;
++(void) setLoggingEnabled:(BOOL) enabled;
 @end

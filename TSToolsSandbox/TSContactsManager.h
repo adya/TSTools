@@ -43,13 +43,13 @@
 
 @interface TSContactsManager : NSObject
 
-+ (instancetype) sharedManager;
++ (nonnull instancetype) sharedManager;
 
-@property (readonly) NSArray<TSContact*>* _Nonnull contactsBook;
+@property (readonly, nonnull) NSArray<TSContact*>* contactsBook;
 
-@property id<TSContactManagerAccessDelegate> _Nullable accessDelegate;
+@property (weak, nullable) id<TSContactManagerAccessDelegate> accessDelegate;
 
-@property id<TSContactManagerProgressDelegate> _Nullable progressDelegate;
+@property (weak, nullable) id<TSContactManagerProgressDelegate> progressDelegate;
 
 @property (readonly) BOOL isLoaded;
 
@@ -70,7 +70,7 @@ typedef NS_ENUM(NSInteger, TSPhoneType){
 
 @interface TSPhone : NSObject
 
-@property NSString* _Nonnull number;
+@property (nonnull) NSString* number;
 @property TSPhoneType type;
 @end
 
@@ -83,17 +83,17 @@ typedef NS_ENUM(NSInteger, TSPhoneType){
 
 @interface TSContact : NSObject
 
-@property NSString* _Nullable firstName;
-@property NSString* _Nullable lastName;
-@property NSString* _Nullable middleName;
+@property (nullable) NSString* firstName;
+@property (nullable) NSString* lastName;
+@property (nullable) NSString* middleName;
 
-@property (readonly) NSString* _Nonnull fullName;
+@property (readonly, nullable) NSString* fullName;
 
-@property NSString* _Nullable email;
-@property NSArray<NSString*>* _Nullable auxEmails;
+@property (nullable) NSString* email;
+@property (nullable) NSArray<NSString*>*  auxEmails;
 
-@property TSPhone* _Nonnull phone;
-@property NSArray* _Nonnull auxPhones;
+@property (nullable) TSPhone* phone;
+@property (nullable) NSArray* auxPhones;
 
-@property UIImage* _Nullable picture;
+@property (nullable) UIImage* picture;
 @end
