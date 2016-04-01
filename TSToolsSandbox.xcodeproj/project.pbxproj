@@ -25,7 +25,6 @@
 		604D69161C81E53B0035164B /* TSRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 604D68FD1C81E53B0035164B /* TSRequestManager.m */; };
 		604D69171C81E53B0035164B /* TSRequestManager+Images.m in Sources */ = {isa = PBXBuildFile; fileRef = 604D68FF1C81E53B0035164B /* TSRequestManager+Images.m */; };
 		604D69181C81E53B0035164B /* TSShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 604D69011C81E53B0035164B /* TSShareManager.m */; };
-		604D69191C81E53B0035164B /* TSStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 604D69031C81E53B0035164B /* TSStorage.m */; };
 		604D691A1C81E53B0035164B /* TSUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 604D69051C81E53B0035164B /* TSUtils.m */; };
 		604D691B1C81E53B0035164B /* TSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 604D69071C81E53B0035164B /* TSViewController.m */; };
 		604D691C1C81E53B0035164B /* UIImageView+AFNetworking+Animated.m in Sources */ = {isa = PBXBuildFile; fileRef = 604D69091C81E53B0035164B /* UIImageView+AFNetworking+Animated.m */; };
@@ -35,6 +34,9 @@
 		609AF1C81CAC1F9D00CC9441 /* TSPurchaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 609AF1C61CAC1F9D00CC9441 /* TSPurchaseManager.m */; };
 		609AF1CB1CAD9E2300CC9441 /* TSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 609AF1CA1CAD9E2300CC9441 /* TSLogger.m */; };
 		609AF1CE1CADA0D700CC9441 /* TSAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 609AF1CD1CADA0D700CC9441 /* TSAlert.m */; };
+		609AF1D11CAF126500CC9441 /* TSLocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 609AF1D01CAF126500CC9441 /* TSLocalStorage.m */; };
+		609AF1D41CAF12A300CC9441 /* TSTempStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 609AF1D31CAF12A300CC9441 /* TSTempStorage.m */; };
+		609AF1D71CAF130900CC9441 /* TSRemoteStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 609AF1D61CAF130900CC9441 /* TSRemoteStorage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +75,6 @@
 		604D69001C81E53B0035164B /* TSShareManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSShareManager.h; sourceTree = "<group>"; };
 		604D69011C81E53B0035164B /* TSShareManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSShareManager.m; sourceTree = "<group>"; };
 		604D69021C81E53B0035164B /* TSStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSStorage.h; sourceTree = "<group>"; };
-		604D69031C81E53B0035164B /* TSStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSStorage.m; sourceTree = "<group>"; };
 		604D69041C81E53B0035164B /* TSUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSUtils.h; sourceTree = "<group>"; };
 		604D69051C81E53B0035164B /* TSUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSUtils.m; sourceTree = "<group>"; };
 		604D69061C81E53B0035164B /* TSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSViewController.h; sourceTree = "<group>"; };
@@ -92,6 +93,12 @@
 		609AF1CA1CAD9E2300CC9441 /* TSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLogger.m; sourceTree = "<group>"; };
 		609AF1CC1CADA0D700CC9441 /* TSAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAlert.h; sourceTree = "<group>"; };
 		609AF1CD1CADA0D700CC9441 /* TSAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAlert.m; sourceTree = "<group>"; };
+		609AF1CF1CAF126500CC9441 /* TSLocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSLocalStorage.h; sourceTree = "<group>"; };
+		609AF1D01CAF126500CC9441 /* TSLocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLocalStorage.m; sourceTree = "<group>"; };
+		609AF1D21CAF12A300CC9441 /* TSTempStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSTempStorage.h; sourceTree = "<group>"; };
+		609AF1D31CAF12A300CC9441 /* TSTempStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSTempStorage.m; sourceTree = "<group>"; };
+		609AF1D51CAF130900CC9441 /* TSRemoteStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRemoteStorage.h; sourceTree = "<group>"; };
+		609AF1D61CAF130900CC9441 /* TSRemoteStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRemoteStorage.m; sourceTree = "<group>"; };
 		75C0089ACBF89CFF56E5D99C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00173E7D1408F28BD15059E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,7 +189,12 @@
 				604D69001C81E53B0035164B /* TSShareManager.h */,
 				604D69011C81E53B0035164B /* TSShareManager.m */,
 				604D69021C81E53B0035164B /* TSStorage.h */,
-				604D69031C81E53B0035164B /* TSStorage.m */,
+				609AF1D21CAF12A300CC9441 /* TSTempStorage.h */,
+				609AF1D31CAF12A300CC9441 /* TSTempStorage.m */,
+				609AF1CF1CAF126500CC9441 /* TSLocalStorage.h */,
+				609AF1D01CAF126500CC9441 /* TSLocalStorage.m */,
+				609AF1D51CAF130900CC9441 /* TSRemoteStorage.h */,
+				609AF1D61CAF130900CC9441 /* TSRemoteStorage.m */,
 				604D69041C81E53B0035164B /* TSUtils.h */,
 				604D69051C81E53B0035164B /* TSUtils.m */,
 				604D69061C81E53B0035164B /* TSViewController.h */,
@@ -348,8 +360,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				609AF1D41CAF12A300CC9441 /* TSTempStorage.m in Sources */,
 				604D691C1C81E53B0035164B /* UIImageView+AFNetworking+Animated.m in Sources */,
-				604D69191C81E53B0035164B /* TSStorage.m in Sources */,
+				609AF1D11CAF126500CC9441 /* TSLocalStorage.m in Sources */,
 				609AF1CB1CAD9E2300CC9441 /* TSLogger.m in Sources */,
 				604D68DA1C81E4270035164B /* ViewController.m in Sources */,
 				609AF1C81CAC1F9D00CC9441 /* TSPurchaseManager.m in Sources */,
@@ -363,6 +376,7 @@
 				604D69151C81E53B0035164B /* TSPushManager.m in Sources */,
 				604D690F1C81E53B0035164B /* TSContactsManager.m in Sources */,
 				604D68D41C81E4270035164B /* main.m in Sources */,
+				609AF1D71CAF130900CC9441 /* TSRemoteStorage.m in Sources */,
 				604D69161C81E53B0035164B /* TSRequestManager.m in Sources */,
 				604D690E1C81E53B0035164B /* ALAssetsLibrary+CustomPhotoAlbum.m in Sources */,
 				604D69101C81E53B0035164B /* TSCurrencyTextField.m in Sources */,

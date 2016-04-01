@@ -1,41 +1,72 @@
 /**
  *  Author:     AdYa
- *  Version:    1.0
+ *  Version:    2.0
  *  iOS:        2.0+
- *  Date:       ../../2015
- *  Status:     Rework Requested
+ *  Date:       04/01/2015
+ *  Status:     Completed
  *
  *  Description:
  *
- *  Will evolve into family of TSStorage, TSRemoteStorage, TSLocalStorage, TSTempStorage.
- *  TSStoregate will be base @interface or even @protocol
+ *  TSStorage provides set of methods to implement common way of saving values in different storages.
  */
 #ifndef TS_STORAGE_H
 #define TS_STORAGE_H
 
 #import <Foundation/Foundation.h>
 
-// Best practice to use this storage:
+/**  */
+@protocol TSStorage <NSObject>
 
-// 1. Define your keys for this storage.
-// 2. Feel free to use it.
+/** Saves object in storage and associates it with given key.
+ *  @param object Object to be saved.
+ *  @param key Key which represents an object.
+ */
++(void) saveObject:(nonnull id) object forKey:(nonnull NSString*) key;
 
-@interface TSStorage : NSObject{
-    NSMutableDictionary* values;
-}
+/** Loads object associated with given key.
+ *  @param key Key which represents an object.
+ *  @return Returns object if any or nil.
+ */
++(nullable id) loadObjectForKey:(nonnull NSString*) key;
 
-+ (instancetype) sharedStorage;
+/** Loads object associated with given key and if exists - removes it from storage. 
+ *  @param key Key which represents an object.
+ *  @return Returns object if any or nil.
+ */
++(nullable id) popObjectForKey:(nonnull NSString*) key;
 
-// Sets value for specified key.
--(void) putValue:(id)value forKey:(NSString*) key;
+/** Removes object associated with specified key. 
+ *  @param key Key which represents an object.
+ */
++(void) removeObjectForKey:(nonnull NSString*) key;
 
-// Gets value for specified key.
--(id) getValueForKey:(NSString*) key;
+/** Removes all objects from the storage. */
++(void) removeAllObjects;
 
-// Gets value for specified key and removes it.
--(id) popValueForKey:(NSString*) key;
+/** Checks whether the object, associated with given key, exists in storage. 
+ *  @param key Key which represents an object.
+ *  @return Returns YES if object exists.
+ */
++(BOOL) hasObjectForKey:(nonnull NSString*) key;
 
-// Removes value for specified key.
--(void) removeValueForKey:(NSString*)key;
+/** Number of stored objects.
+ *  @return Returns number of stored objects.
+ */
++(NSUInteger) count;
+
+/** Begins a chain update. Chain update will not automatically synchronize storage until you call endChainUpdate. */
++(void) beginChainUpdate;
+
+/** Ends a chain update and synchronizes all changes made to the storage with underlying storage. */
++(void) endChainUpdate;
+
+/** Cancel a chain update and discards any changes made to the storage. */
++(void) cancelChainUpdate;
+
 @end
+
+
+
+
+
 #endif
