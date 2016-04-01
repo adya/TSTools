@@ -43,7 +43,7 @@ A drop-in replacement for UILabel that supports attributes, data detectors, link
 * [pod '**TestFairy**'](http://testfairy.com/)             
 Provides easy app delivering to testers.
 
-* [pod '**RESwitch**']
+* [pod '**RESwitch**'](https://github.com/romaonthego/RESwitch)
 Open source alternative to UISwitch, customizable via UIAppearance protocol.
 
 * [pod '**REFormattedNumberField**'](https://github.com/romaonthego/REFormattedNumberField)
@@ -51,5 +51,3 @@ UITextField subclass that allows numeric input in a predefined format.
 
 * [pod '**ZBarSDK**'](http://zbar.sourceforge.net/iphone/index.html)               
 Essential Barcode processing library.
-
- 
