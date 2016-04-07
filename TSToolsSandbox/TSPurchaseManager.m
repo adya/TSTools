@@ -200,7 +200,7 @@ static NSString* const STORED_TRANSACTIONS = @"TSIAPReceipt";
 
 -(void) restorePayments:(NSDictionary*) payments{
     NSMutableArray<TSProduct*>* productsRestored = [NSMutableArray new];
-    [payments enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+    [payments enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL* stop) {
         TSProduct* prod = [self productWithIdentifier:obj];
         [productsRestored addObject:prod];
         if ([delegate respondsToSelector:@selector(onPurchasingProduct:completedWithTransactionId:restored:)])

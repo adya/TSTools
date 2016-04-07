@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A079DE0576484B321518402 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C0089ACBF89CFF56E5D99C /* libPods.a */; };
+		600A23CB1CB2E725006D473C /* TSFeaturesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 600A23CA1CB2E725006D473C /* TSFeaturesManager.m */; };
 		604D68D41C81E4270035164B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 604D68D31C81E4270035164B /* main.m */; };
 		604D68D71C81E4270035164B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 604D68D61C81E4270035164B /* AppDelegate.m */; };
 		604D68DA1C81E4270035164B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 604D68D91C81E4270035164B /* ViewController.m */; };
@@ -41,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		2C9C77BB3072D642D1F472CD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		600A23C91CB2E725006D473C /* TSFeaturesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSFeaturesManager.h; sourceTree = "<group>"; };
+		600A23CA1CB2E725006D473C /* TSFeaturesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFeaturesManager.m; sourceTree = "<group>"; };
 		604D68CF1C81E4270035164B /* TSToolsSandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSToolsSandbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		604D68D31C81E4270035164B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		604D68D51C81E4270035164B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 				604D68F31C81E53B0035164B /* TSJSONParselable.h */,
 				604D68EB1C81E53B0035164B /* ALAssetsLibrary+CustomPhotoAlbum.h */,
 				604D68EC1C81E53B0035164B /* ALAssetsLibrary+CustomPhotoAlbum.m */,
+				600A23C91CB2E725006D473C /* TSFeaturesManager.h */,
+				600A23CA1CB2E725006D473C /* TSFeaturesManager.m */,
 			);
 			name = TSTools;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				604D68DA1C81E4270035164B /* ViewController.m in Sources */,
 				609AF1C81CAC1F9D00CC9441 /* TSPurchaseManager.m in Sources */,
 				604D69121C81E53B0035164B /* TSMenuManager.m in Sources */,
+				600A23CB1CB2E725006D473C /* TSFeaturesManager.m in Sources */,
 				604D691D1C81E53B0035164B /* UILabel+AutoSize.m in Sources */,
 				609AF1CE1CADA0D700CC9441 /* TSAlert.m in Sources */,
 				604D691E1C81E53B0035164B /* UIWindow+UIWindow+PresentedViewController.m in Sources */,

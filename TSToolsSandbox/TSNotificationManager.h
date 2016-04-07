@@ -43,7 +43,7 @@ typedef BOOL (^TSNotificationValidatingBlock)(UILocalNotification* _Nonnull noti
     @param block Validation block which will be called for every scheduled notification.
     @return Returns YES if notification is valid, otherwise - NO.
  */
-+ (void) invalidateStoredNotificationsWithBlock:(_Nonnull TSNotificationValidatingBlock) block;
++ (void) invalidateStoredNotificationsWithBlock:(TSNotificationValidatingBlock _Nonnull) block;
 
 /** Schedules notification on given date with specified message and handler.
     Note: date will be represented in default time zone. to specify time zone explicitly - use appropriate method's overload.

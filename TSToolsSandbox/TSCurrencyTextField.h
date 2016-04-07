@@ -19,10 +19,10 @@
 
 @interface TSCurrencyTextField : UITextField
 
-@property (nonatomic) NSCharacterSet* _Nonnull invalidInputCharacterSet;
-@property (nonatomic) NSNumberFormatter* _Nonnull currencyNumberFormatter;
+@property (nonatomic, nonnull) NSCharacterSet* invalidInputCharacterSet;
+@property (nonatomic, nonnull) NSNumberFormatter* currencyNumberFormatter;
 
-@property (nonatomic) NSNumber* _Nonnull amount;
+@property (nonatomic, nonnull) NSNumber* amount;
 @property (nonatomic, assign) NSUInteger maximumLength;
 
 @end
