@@ -48,30 +48,33 @@ NSString* const kTSNotificationAppearancePositionYOffset = @"TSNotAppPosYOffset"
     }
 }
 
+/// Default appearance dictionary.
 +(NSDictionary*) notificationAppearanceWithCustomValues:(NSDictionary*) custom{
     NSMutableDictionary* appearance = [NSMutableDictionary dictionaryWithDictionary:
-        @{kTSNotificationAppearanceNotificationColor : colorARGB(220, 16, 16, 16),
-          kTSNotificationAppearanceNotificationOpacity : @(0.8f),
-          kTSNotificationAppearanceDimBackground : @(NO),
-          kTSNotificationAppearanceTextColor : [UIColor whiteColor],
-          kTSNotificationAppearanceTextSize : @(0),
-          kTSNotificationAppearanceTextFont : [UIFont systemFontOfSize:16.0f],
-          kTSNotificationAppearanceMargin : @(10.0f),
-          kTSNotificationAppearancePosition : @(TS_NOTIFICATION_POSITION_BOTTOM_CENTER),
-          kTSNotificationAppearancePositionXOffset : @(0),
-          kTSNotificationAppearancePositionYOffset : @(30.0f)
-        }];
-    [appearance setValuesForKeysWithDictionary:custom];
+                                       @{kTSNotificationAppearanceNotificationColor : colorARGB(220, 16, 16, 16),
+                                         kTSNotificationAppearanceNotificationOpacity : @(0.8f),
+                                         kTSNotificationAppearanceDimBackground : @(NO),
+                                         kTSNotificationAppearanceTextColor : [UIColor whiteColor],
+                                         kTSNotificationAppearanceTextSize : @(0),
+                                         kTSNotificationAppearanceTextFont : [UIFont systemFontOfSize:16.0f],
+                                         kTSNotificationAppearanceMargin : @(10.0f),
+                                         kTSNotificationAppearancePosition : @(TS_NOTIFICATION_POSITION_BOTTOM_CENTER),
+                                         kTSNotificationAppearancePositionXOffset : @(0),
+                                         kTSNotificationAppearancePositionYOffset : @(30.0f)
+                                         }];
+    if (custom) [appearance setValuesForKeysWithDictionary:custom];
     return appearance;
 }
 
+/// Default error appearance dictionary.
 +(NSDictionary*) notificationErrorAppearanceWithCustomValues:(NSDictionary*) custom{
-    NSMutableDictionary* appearance = [NSMutableDictionary dictionaryWithDictionary:[self notificationAppearanceWithCustomValues:custom]];
+    NSMutableDictionary* appearance = [NSMutableDictionary dictionaryWithDictionary:[self notificationAppearanceWithCustomValues:nil]];
     [appearance setValuesForKeysWithDictionary:@{kTSNotificationAppearanceTextColor : colorRGB(180, 24, 24)}];
-    [appearance setValuesForKeysWithDictionary:custom];
+    if (custom) [appearance setValuesForKeysWithDictionary:custom];
     return appearance;
 }
 
+/// Applies appearance to the hud.
 +(void) setAppearance:(NSDictionary*) appearance forHUD:(MBProgressHUD*)hud onView:(UIView*) view{
     hud.dimBackground = [[appearance objectForKey:kTSNotificationAppearanceDimBackground] boolValue];
     hud.color = [appearance objectForKey:kTSNotificationAppearanceNotificationColor];
@@ -85,6 +88,7 @@ NSString* const kTSNotificationAppearancePositionYOffset = @"TSNotAppPosYOffset"
                 onView:view];
 }
 
+/// Positions the hud.
 +(void) setPostition:(TSNotificationPosition)position withCustomOffset:(CGPoint) offset forHUD:(MBProgressHUD*)hud onView:(UIView*) view{
     [hud layoutIfNeeded]; // layout to calculate hud size
     [hud setNeedsLayout];
@@ -120,7 +124,7 @@ NSString* const kTSNotificationAppearancePositionYOffset = @"TSNotAppPosYOffset"
         case TS_NOTIFICATION_POSITION_TOP_CENTER:
         case TS_NOTIFICATION_POSITION_CENTER_CENTER:
         case TS_NOTIFICATION_POSITION_BOTTOM_CENTER:
-         {
+        {
             hud.xOffset = offset.x;
             break;
         }
@@ -194,11 +198,11 @@ NSString* const kTSNotificationAppearancePositionYOffset = @"TSNotAppPosYOffset"
 }
 +(void) notifyError:(TSError*) error withAppearance:(NSDictionary*)appearance timeInterval:(TSNotificationTimeInterval) time onView:(UIView*) view{
     appearance = [self notificationErrorAppearanceWithCustomValues:appearance];
-    if (!error.title || [error.title isEqualToString:@""])
+    if (!error.title || error.title.length == 0)
         [self notify:[NSString stringWithFormat: @"%@", error.description] withAppearance:appearance timeInterval:time onView:view];
     else
         [self notify:[NSString stringWithFormat: @"%@ : %@", error.title, error.description] withAppearance:appearance timeInterval:time onView:view];
-
+    
 }
 
 +(void) hideNotification{
@@ -210,13 +214,20 @@ NSString* const kTSNotificationAppearancePositionYOffset = @"TSNotAppPosYOffset"
 
 #pragma mark - Progress indicator
 
++(void) showProgress{
+    [self showProgressOnView:DEFAULT_VIEW];
+}
+
++(void) showProgressWithAppearance:(NSDictionary *)appearance{
+    [self showProgressWithMessage:DEFAULT_MESSAGE withAppearance:appearance];
+}
 +(void) showProgressOnView:(UIView*)view{
     [self showProgressWithMessage:DEFAULT_MESSAGE onView:view];
 }
-
 +(void) showProgressWithMessage:(NSString*)message{
     [self showProgressWithMessage:message withAppearance:DEFAULT_APPEARANCE];
 }
+
 +(void) showProgressWithMessage:(NSString*)message onView:(UIView*)view{
     [self showProgressWithMessage:message withAppearance:DEFAULT_APPEARANCE onView:view];
 }
@@ -225,7 +236,7 @@ NSString* const kTSNotificationAppearancePositionYOffset = @"TSNotAppPosYOffset"
 }
 +(void) showProgressWithMessage:(NSString*)message withAppearance:(NSDictionary*)appearance onView:(UIView*)view{
     if (!view) return;
-    [self hideNotificationOnView:view];
+    [self hideProgressOnView:view];
     MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.labelText = message;
     hud.mode = MBProgressHUDModeIndeterminate;

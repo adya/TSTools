@@ -5,7 +5,7 @@
  *  Date:       03/31/2016
  *  Status:     In Progress, Undocumented
  *
- *  Dependency: @framework MBProgressHUD,
+ *  Dependency: @pod MBProgressHUD,
  *              @header TSError,
  *              @header TSUtils,
  *              @header UIWindow+PresentedViewController
@@ -134,11 +134,8 @@ withAppearance:(NSDictionary*)appearance
 +(void) hideNotificationOnView:(UIView*) view;
 
 +(void) showProgress;
-
 +(void) showProgressWithAppearance:(NSDictionary*) appearance;
-
 +(void) showProgressOnView:(UIView*)view;
-
 +(void) showProgressWithMessage:(NSString*)message;
 
 +(void) showProgressWithMessage:(NSString*)message
