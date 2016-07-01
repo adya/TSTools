@@ -6,7 +6,7 @@
  *  Status:     Outdated, Undocumented
  *
  *  Dependency: @framework AFNetworking,
- *              @header TSUtils,
+ *              @header UIImageView+AFNetworking
  *              @header TSError
  *
  *  Description:
@@ -16,7 +16,6 @@
 
 #import <Foundation/Foundation.h>
 #import "TSRequestManager.h"
-
 
 @interface TSRequestManager (Images)
 
