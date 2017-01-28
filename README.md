@@ -3,12 +3,14 @@ TSTools is a library which contains variety of useful utilities, managers and ex
 
 * **Author**:  AdYa.
 * **Language**: Objective-C.
-* **Swift Compatibility**: Partial (In Progress).
+* **Swift Compatibility**: Partial (No changes coming).
 * **Version**: *2.0*.
 * **iOS**:     *7.0 - 8.0* (upper limit determined by lowest API deprecation).
-* **Status**:  Constantly evolving.
+* **Status**:  Closed. Is being reworked to TSKit. 
 
 ### Pods ###
+
+Below are pods on which TSTools depends.
 
 * [pod '**AFNetworking**'](https://github.com/AFNetworking/AFNetworking)          
 Essential networking library.
