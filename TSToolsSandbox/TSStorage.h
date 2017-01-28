@@ -3,6 +3,7 @@
  *  Version:    2.0
  *  iOS:        2.0+
  *  Date:       04/01/2015
+ *  Language:   Objective-C
  *  Status:     Completed
  *
  *  Description:
@@ -52,7 +53,7 @@
 /** Number of stored objects.
  *  @return Returns number of stored objects.
  */
-+(NSUInteger) count;
++(NSInteger) count;
 
 /** Begins a chain update. Chain update will not automatically synchronize storage until you call endChainUpdate. */
 +(void) beginChainUpdate;

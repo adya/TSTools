@@ -92,7 +92,7 @@
     return [self loadObjectForKey:key] != nil;
 }
 
-+(NSUInteger) count {
++(NSInteger) count {
     if ([self chainStorage])
         return [self chainStorage].count;
     else
